@@ -4,6 +4,8 @@ import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -37,8 +39,8 @@ public class UserOrmDao {
         user.setLastName(userUpdates.getLastName());
         user.setUsername(userUpdates.getUsername());
         user.setPassword(userUpdates.getPassword());
-        user.setProfilePicture(userUpdates.getProfilePicture());
-        user.setHandle(userUpdates.getHandle());
+        user.setEmail(userUpdates.getEmail());
+        user.setDateOfBirth(userUpdates.getDateOfBirth());
         return userRepository.save(user);
     }
     
