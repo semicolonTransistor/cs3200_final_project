@@ -14,13 +14,16 @@
 <script src="https://unpkg.com/react-router-dom@5.2.0/umd/react-router-dom.min.js"></script>
 
 <script src="users/user-service.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
-<script src="users/inline-user-editor.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
 <script src="users/user-form-editor.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
 <script src="users/user-list.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
 
+<script src="recipes/recipe-service.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
+<script src="recipes/recipe-form-editor.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
+<script src="recipes/recipe-list.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
+
 <script src="index.js" type="text/jsx" data-type="module" data-plugins="transform-modules-umd"></script>
 <script type="text/jsx" data-type="module" data-plugins="transform-modules-umd">
-    import App from "index";
+    import App from "src/main/webapp/react/index";
     ReactDOM.render(
         React.createElement(App),
         document.getElementById('root')
