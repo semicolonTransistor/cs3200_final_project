@@ -28,11 +28,15 @@ const RecipeFormEditor = () => {
           <label>Id</label>
           <input disabled value={recipe.id} className="form-control"/>
           <label>Title</label>
-          {/*<input onChange={(e) =>*/}
-          {/*  setRecipe(recipe =>*/}
-          {/*    ({...recipe, title: e.target.value}))}*/}
-          {/*       value={recipe.title} className="form-control"/>*/}
-          {/*<br/>*/}
+          <input onChange={(e) =>
+            setRecipe(recipe =>
+              ({...recipe, title: e.target.value}))}
+                 value={recipe.title} className="form-control"/>
+          <br/>
+          <button className="btn btn-warning" onClick={() => {history.goBack()}}>Cancel</button>
+          <button className="btn btn-danger" onClick={() => deleteRecipe(recipe.id)}>Delete</button>
+          <button className="btn btn-primary" onClick={() => updateRecipe(recipe.id, recipe)}>Save</button>
+          <button className="btn btn-success" onClick={() => createRecipe(recipe)}>Create</button>
         </div>
     )
 }
