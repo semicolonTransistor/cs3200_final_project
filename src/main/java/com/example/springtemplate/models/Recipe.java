@@ -3,6 +3,7 @@ package com.example.springtemplate.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "recipes")
@@ -18,9 +19,15 @@ public class Recipe {
     private Category category;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "author", nullable = false)
     private User author;
+
+    @OneToMany(mappedBy = "recipe")
+    Set<IngredientToRecipe> ingredientsMapping;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "recipe")
+    Set<Rating> ratings;
 
     public Recipe(){
 
@@ -44,5 +51,33 @@ public class Recipe {
 
     public User getAuthor() {
         return author;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public Set<Rating> getRatings(){
+        return this.ratings;
+    }
+
+    public Set<IngredientToRecipe> getIngredientsMapping() {
+        return ingredientsMapping;
     }
 }

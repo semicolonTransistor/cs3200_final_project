@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -18,8 +20,13 @@ public class User {
     private String email;
     private Date dateOfBirth;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
-    private List<Recipe> recipes;
+    private Set<Recipe> recipes;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user")
+    private Set<Rating> ratings;
 
     public Integer getId() {
         return id;
@@ -77,8 +84,12 @@ public class User {
         this.email = email;
     }
 
-    public List<Recipe> getRecipes() {
+    public Set<Recipe> getRecipes() {
         return recipes;
+    }
+
+    public Set<Rating> getRatings() {
+        return ratings;
     }
 
     public User(String username, String password, String first_name, String last_name, String email, Date dateOfBirth) {
