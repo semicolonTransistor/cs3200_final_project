@@ -46,16 +46,19 @@ deleted, all ingredients used in that recipe will not be deleted.
 11. Description of user interface requirements
 
 -User List: displays a list of all users
+
 -User Editor: displays a particular user for editing or allows for creating a new user.
 Also allows for navigation to all recipes written by that particular users.
 
 
 -Recipe List: displays a list of all recipes
+
 -Recipe Editor: displays a particular recipe for editing or allows for creating a new recipe.
 Also allows for navigation to all ingredients used in that particular recipe as well as
 the author of that recipe.
 
 
 -Ingredient List: displays a list of all ingredients
+
 -Ingredient Editor: displays a particular ingredient for editing or allows for creating a
 new ingredient. Also allows for navigation to all recipes that use that particular ingredient.
