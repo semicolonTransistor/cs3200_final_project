@@ -28,6 +28,8 @@ const UserList = () => {
             </li>)
         }
       </ul>
+      <br/>
+      <Link to={"/"}>Back to Landing Page</Link>
 
 
     </div>

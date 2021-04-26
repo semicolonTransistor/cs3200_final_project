@@ -76,6 +76,11 @@ const UserFormEditor = () => {
             }
           </ul>
           <br/>
+          <div className={'mb-4'}>
+            <Link to={'/users'}>
+              <span>Back to Users List</span>
+            </Link>
+          </div>
           <div>
             <button className="btn btn-warning" onClick={() => {history.goBack()}}>Cancel</button>
             <button className="btn btn-danger" onClick={() => deleteUser(user.id)}>Delete</button>
@@ -86,11 +91,6 @@ const UserFormEditor = () => {
                 updateUser(user.id, user)
               }
             }}>Save</button>
-          </div>
-          <div className={'mb-4'}>
-            <Link to={'/users'}>
-              <span>Back to Users List</span>
-            </Link>
           </div>
         </div>
     )
