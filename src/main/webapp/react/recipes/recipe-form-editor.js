@@ -110,7 +110,9 @@ const RecipeFormEditor = () => {
                 <option value = "LUNCH"> Lunch </option>
                 <option value = "SNACK"> Snack </option>
             </select>
-            <label>Author</label>
+            <label>
+                <Link to={`/users/${recipe.author.id}`}>Author</Link>
+            </label>
             <select className = "form-select" onChange={(e) =>
                 setRecipe(recipe =>
                     ({...recipe, author: users.find(user => user.id === parseInt(e.target.value))}))}
@@ -241,15 +243,22 @@ const RecipeFormEditor = () => {
             </ul>
             <br/>
 
-            <button className="btn btn-warning" onClick={() => {history.goBack()}}>Cancel</button>
-            <button className="btn btn-danger" onClick={() => deleteRecipe(recipe.id)}>Delete</button>
-            <button className="btn btn-primary" onClick={() => {
-                if(id === "new") {
-                    createRecipe(recipe)
-                } else {
-                    updateRecipe(recipe.id, recipe)
-                }
-            }}>Save</button>
+            <div>
+                <button className="btn btn-warning" onClick={() => {history.goBack()}}>Cancel</button>
+                <button className="btn btn-danger" onClick={() => deleteRecipe(recipe.id)}>Delete</button>
+                <button className="btn btn-primary" onClick={() => {
+                    if(id === "new") {
+                        createRecipe(recipe)
+                    } else {
+                        updateRecipe(recipe.id, recipe)
+                    }
+                }}>Save</button>
+            </div>
+            <div className={'mb-4'}>
+                <Link to={'/recipes'}>
+                    <span>Back to Recipes List</span>
+                </Link>
+            </div>
         </div>
     )
 }

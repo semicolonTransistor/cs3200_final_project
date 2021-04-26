@@ -1,13 +1,17 @@
 import userService from "./user-service"
 const {useState, useEffect} = React;
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {useParams, useHistory, Link} = window.ReactRouterDOM;
 const UserFormEditor = () => {
         const {id} = useParams()
         const [user, setUser] = useState({})
+        const [recipes, setRecipes] = useState([])
         useEffect(() => {
                 if(id !== "new") {
                         findUserById(id)
                 }
+        }, []);
+        useEffect(() => {
+          findRecipesByUserId()
         }, []);
         const findUserById = (id) =>
           userService.findUserById(id)
@@ -22,6 +26,9 @@ const UserFormEditor = () => {
         const updateUser = (id, newUser) =>
           userService.updateUser(id, newUser)
             .then(() => history.goBack())
+        const findRecipesByUserId = () =>
+          userService.findRecipesByUserId(id)
+            .then(recipesList => setRecipes(recipesList))
         return (
         <div>
           <h2>User Editor</h2>
@@ -57,11 +64,34 @@ const UserFormEditor = () => {
             setUser(user =>
               ({...user, dateOfBirth: e.target.value}))}
                  value={user.dateOfBirth} className="form-control" type={'date'}/>
+          <label>Recipes</label>
+          <ul className="list-group">
+            {
+              recipes.map(recipe =>
+                <li key={recipe.id} className={'list-group-item'}>
+                  <Link to={`/recipes/${recipe.id}`}>
+                    {recipe.title}
+                  </Link>
+                </li>)
+            }
+          </ul>
           <br/>
-          <button className="btn btn-warning" onClick={() => {history.goBack()}}>Cancel</button>
-          <button className="btn btn-danger" onClick={() => deleteUser(user.id)}>Delete</button>
-          <button className="btn btn-primary" onClick={() => updateUser(user.id, user)}>Save</button>
-          <button className="btn btn-success" onClick={() => createUser(user)}>Create</button>
+          <div>
+            <button className="btn btn-warning" onClick={() => {history.goBack()}}>Cancel</button>
+            <button className="btn btn-danger" onClick={() => deleteUser(user.id)}>Delete</button>
+            <button className="btn btn-primary" onClick={() => {
+              if(id === "new") {
+                createUser(user)
+              } else {
+                updateUser(user.id, user)
+              }
+            }}>Save</button>
+          </div>
+          <div className={'mb-4'}>
+            <Link to={'/users'}>
+              <span>Back to Users List</span>
+            </Link>
+          </div>
         </div>
     )
 }

@@ -1,25 +1,24 @@
 // declare URL where server listens for HTTP requests
 const RECIPES_URL = "http://104.236.92.64/api/recipes"
 
-// retrieve all users from the server
+// retrieve all recipes from the server
 export const findAllRecipes = () =>
   fetch(RECIPES_URL)
     .then(response => response.json())
 
-// retrieve a single user by their ID
+// retrieve a recipe user by their ID
 export const findRecipeById = (id) =>
   fetch(`${RECIPES_URL}/${id}`)
     .then(response => response.json())
 
-
-// delete a user by their ID
+// delete a recipe by their ID
 export const deleteRecipe = (id) =>
   fetch(`${RECIPES_URL}/${id}`, {
     method: "DELETE"
   })
 
 
-// create a new user
+// create a new recipe
 export const createRecipe = (recipe) =>
   fetch(RECIPES_URL, {
     method: 'POST',
