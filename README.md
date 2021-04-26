@@ -46,7 +46,6 @@ Every recipe has a category. A category can be one of: Breakfast, Lunch, Dinner,
 **11. Description of user interface requirements**
 
 User List: displays a list of all users
-
 User Editor: displays a particular user for editing or allows for creating a new user.
 Also allows for navigation to all recipes written by that particular users.
 
