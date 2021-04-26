@@ -21,4 +21,12 @@ public interface RecipesRepository extends CrudRepository<Recipe, Integer> {
 
     @Query(value = "SELECT r FROM Recipe r WHERE r.title LIKE CONCAT('%', :title, '%')")
     List<Recipe> findByTitle(@Param("title") String title);
+
+    @Query(value = "" +
+            "SELECT * FROM recipes " +
+            "WHERE recipes.id IN (" +
+            "SELECT ingredients_to_recipes.recipe " +
+            "FROM ingredients_to_recipes " +
+            "WHERE ingredients_to_recipes.ingredient = :id)", nativeQuery = true)
+    List<Recipe> findByIngredient(@Param("id") Integer ingredientId);
 }

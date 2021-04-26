@@ -50,6 +50,11 @@ public class RecipeOrmDao {
         return repository.findByAuthor(id);
     }
 
+    @GetMapping("/api/recipes/ingredient/{id}")
+    public List<Recipe> findByIngredient(@PathVariable("id") Integer id){
+        return repository.findByIngredient(id);
+    }
+
     // only commit changes if all succeeds
     @Transactional
     @PostMapping("/api/recipes")
