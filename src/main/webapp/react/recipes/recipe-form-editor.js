@@ -3,7 +3,7 @@ import userService from "../users/user-service"
 // import ingredientService from "../ingredient/ingredient-service"
 
 const {useState, useEffect} = React;
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {useParams, useHistory, Link} = window.ReactRouterDOM;
 
 const RecipeFormEditor = () => {
     const {id} = useParams()
@@ -143,7 +143,9 @@ const RecipeFormEditor = () => {
                         <li className={"list-group-item"}>
                             <div className={"row"}>
                                 <div className="col-sm">
-                                    {ingredientEntry.ingredient.name}
+                                    <Link to={`/ingredients/${ingredientEntry.ingredient.id}`}>
+                                        {ingredientEntry.ingredient.name}
+                                    </Link>
                                 </div>
                                 <div className="col-sm">
                                     <input onChange={(e) =>
