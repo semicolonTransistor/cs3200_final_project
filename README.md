@@ -28,7 +28,7 @@ A user is represented with a first name, last name, username, password, email, a
 recipe: a recipe is represented with a title, a set of instructions, and a category
 ingredient: an ingredient is represented by its name.
 
-**8. Description of user to domain object relationship: **
+**8. Description of user to domain object relationship:**
 
 User/Recipe: Each user can write many recipes. A recipe is written by 1 user. 
 If a user is removed, then so are their related recipes.
