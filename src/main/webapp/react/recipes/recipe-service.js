@@ -23,7 +23,7 @@ export const deleteRecipe = (id) =>
 export const createRecipe = (recipe) =>
   fetch(RECIPES_URL, {
     method: 'POST',
-    body: JSON.stringify(user),
+    body: JSON.stringify(recipe),
     headers: {'content-type': 'application/json'}
   })
     .then(response => response.json())
@@ -33,7 +33,7 @@ export const createRecipe = (recipe) =>
 export const updateRecipe = (id, recipe) =>
   fetch(`${RECIPES_URL}/${id}`, {
     method: 'PUT',
-    body: JSON.stringify(user),
+    body: JSON.stringify(recipe),
     headers: {'content-type': 'application/json'}
   })
     .then(response => response.json())
