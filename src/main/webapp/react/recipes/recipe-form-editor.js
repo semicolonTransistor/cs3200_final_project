@@ -10,7 +10,6 @@ const RecipeFormEditor = () => {
     const [recipe, setRecipe] = useState()
     const [users, setUsers] = useState()
     const [ingredients, setIngredients] = useState()
-    const [newIngredientId, setNewIngredientId] = useState()
     useEffect(() => {
         if (id !== "new") {
             findRecipeById(id)
@@ -111,7 +110,12 @@ const RecipeFormEditor = () => {
                 <option value = "SNACK"> Snack </option>
             </select>
             <label>
-                <Link to={`/users/${recipe.author.id}`}>Author</Link>
+                {
+                    recipe.author !== undefined && <Link to={`/users/${recipe.author.id}`}>Author</Link>
+                }
+                {
+                    recipe.author === undefined && <label> Author </label>
+                }
             </label>
             <select className = "form-select" onChange={(e) =>
                 setRecipe(recipe =>
@@ -210,8 +214,7 @@ const RecipeFormEditor = () => {
                             <label>New Ingredient</label>
                         </div>
                         <div className="col-sm">
-                            <select className = "form-select" onChange={(e) =>
-                                setNewIngredientId(e.target.value)} id="newIngredientId">
+                            <select className = "form-select" id="newIngredientId">
                                 {
                                     ingredients
                                         .filter(ingredient => !recipe.ingredientsMapping
@@ -242,6 +245,9 @@ const RecipeFormEditor = () => {
                 </li>
             </ul>
             <br/>
+            <Link to={`/recipes`}> Back to Recipes List</Link>
+            <br/>
+            <br/>
 
             <div>
                 <button className="btn btn-warning" onClick={() => {history.goBack()}}>Cancel</button>
@@ -253,11 +259,6 @@ const RecipeFormEditor = () => {
                         updateRecipe(recipe.id, recipe)
                     }
                 }}>Save</button>
-            </div>
-            <div className={'mb-4'}>
-                <Link to={'/recipes'}>
-                    <span>Back to Recipes List</span>
-                </Link>
             </div>
         </div>
     )
