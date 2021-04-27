@@ -8,11 +8,11 @@
 		<version>2.4.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>spring-template</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
-	<description>Demo project for Spring Boot</description>
+	<groupId>edu.northeatern.cs3200</groupId>
+	<artifactId>cs3200-final-project</artifactId>
+	<version>1.0.0</version>
+	<name>Recipes</name>
+	<description>Final Project for CS3200. A site for sharing recipes.</description>
 
 	<properties>
 		<java.version>8</java.version>
