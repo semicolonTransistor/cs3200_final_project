@@ -42,7 +42,13 @@ const IngredientFormEditor = () => {
                 setIngredient(ingredient =>
                     ({...ingredient, name: e.target.value}))}
                    value={ingredient.name} className="form-control"/>
-            <label>{ recipesUsing.length > 0 ? `Recipes using ${ingredient.name}` : `No Recipe uses ${ingredient.name}`}</label>
+            <label>{
+                recipesUsing.length > 0 ?
+                    `Recipes using ${ingredient.name}` :
+                    ingredient.name === undefined || ingredient.name.length < 1 ?
+                        'No Recipe Uses this Ingredient' :
+                        `No Recipe Uses ${ingredient.name}`
+            }</label>
             <ul className={"list-group"}>
                 {
                     recipesUsing.map(recipe => {
