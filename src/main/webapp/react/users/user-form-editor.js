@@ -65,7 +65,7 @@ const UserFormEditor = () => {
             <input onChange={(e) =>
                 setUser(user =>
                     ({...user, dateOfBirth: e.target.value}))}
-                   value={user.dateOfBirth} className="form-control" type={'date'}/>
+                   value={user.dateOfBirth} className="form-control" type="date" placeholder="YYYY-MM-DD"/>
             <label>{
                 recipes.length > 0 ?
                     `Recipes by ${user.username}`:
